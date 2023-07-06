@@ -1,6 +1,4 @@
 <div class="container">
-  <p style="color: green"><%= notice %></p>
-
   <h1 class="text-center">Jobs</h1>
 
   <div id="jobs" class="card-deck">
@@ -11,6 +9,8 @@
     <% end %>
   </div>
 
-  <%= link_to "New job", new_job_path, class: "btn btn-primary text-center" %>
+  <% if company_signed_in? %>
+    <%= link_to "New job", new_job_path, class: "btn btn-primary text-center" %>
+  <% end %>
 
 </div>
