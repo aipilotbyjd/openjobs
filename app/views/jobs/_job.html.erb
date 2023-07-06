@@ -1,57 +1,8 @@
-<div id="<%= dom_id job %>">
-  <p>
-    <strong>Title:</strong>
-    <%= job.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= job.description %>
-  </p>
-
-  <p>
-    <strong>Company:</strong>
-    <%= job.company %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= job.location %>
-  </p>
-
-  <p>
-    <strong>Employment type:</strong>
-    <%= job.employment_type %>
-  </p>
-
-  <p>
-    <strong>Salary:</strong>
-    <%= job.salary %>
-  </p>
-
-  <p>
-    <strong>Experience level:</strong>
-    <%= job.experience_level %>
-  </p>
-
-  <p>
-    <strong>Education level:</strong>
-    <%= job.education_level %>
-  </p>
-
-  <p>
-    <strong>Skills:</strong>
-    <%= job.skills %>
-  </p>
-
-  <p>
-    <strong>Posted date:</strong>
-    <%= job.posted_date %>
-  </p>
-
-  <p>
-    <strong>Application deadline:</strong>
-    <%= job.application_deadline %>
-  </p>
-
+ <div id="<%= dom_id job %>" class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= job.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= job.company %></h6>
+    <p class="card-text"><%= job.description %></p>
+    <%= link_to "Apply Now", job %>
+  </div>
 </div>

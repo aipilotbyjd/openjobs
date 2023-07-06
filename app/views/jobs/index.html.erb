@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Jobs</h1>
+  <h1 class="text-center">Jobs</h1>
 
-<div id="jobs">
-  <% @jobs.each do |job| %>
-    <%= render job %>
-    <p>
-      <%= link_to "Show this job", job %>
-    </p>
-  <% end %>
+  <div id="jobs" class="card-deck">
+    <% @jobs.each do |job| %>
+      <div class="py-2">
+        <%= render job %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "New job", new_job_path, class: "btn btn-primary text-center" %>
 </div>
-
-<%= link_to "New job", new_job_path %>
