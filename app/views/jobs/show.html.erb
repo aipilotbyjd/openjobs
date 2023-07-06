@@ -4,7 +4,7 @@
   <% if company_signed_in? %>
     <%= link_to "Edit this job", edit_job_path(@job) %> |
   <% end %>
-  
+
   <%= link_to "Back to jobs", jobs_path %>
 
   <%= button_to "Destroy this job", @job, method: :delete %>
