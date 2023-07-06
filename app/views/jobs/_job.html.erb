@@ -2,7 +2,7 @@
   <div class="card-body">
     <h5 class="card-title"><%= job.title %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%= job.company %></h6>
-    <p class="card-text"><%= job.description %></p>
+    <p class="card-text"><%= truncate(job.description , length:150) %></p>
     <%= link_to "Apply Now", job %>
   </div>
 </div>
