@@ -1,4 +1,3 @@
 class Job < ApplicationRecord
-    include ImageUploader::Attachment(:attachment)
-    validates :title, presence: true
+    has_one_attached :attachment
 end
