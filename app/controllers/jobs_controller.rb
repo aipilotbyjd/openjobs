@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy apply ]
   before_action :authenticate_company!, only: %i[ new create edit update destroy ]
+  before_action :authenticate_user!, only: [:oneclickapply]
 
   # GET /jobs or /jobs.json
   def index
@@ -66,7 +67,7 @@ class JobsController < ApplicationController
     @job_application = JobApplication.new(job: @job, user: current_user)
 
     # Assign the name, email, and attachment to the job application
-    @job_application.name = current_user.name
+    # @job_application.name = current_user.name
     @job_application.email = current_user.email
     # @job_application.resume = current_user.attachment
 
