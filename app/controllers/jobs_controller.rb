@@ -36,14 +36,6 @@ class JobsController < ApplicationController
 
   # PATCH/PUT /jobs/1 or /jobs/1.json
   def update
-    uploaded_file = params[:attachment]
-
-    if uploaded_file.present?
-      File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-        file.write(uploaded_file.read)
-      end
-    end
-  
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
@@ -73,6 +65,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:title, :description, :company, :location, :employment_type, :salary, :experience_level, :education_level, :skills, :application_deadline)
+      params.require(:job).permit(:title, :description, :company, :location, :employment_type, :salary, :experience_level, :education_level, :skills, :application_deadline, :attachment)
     end
 end
