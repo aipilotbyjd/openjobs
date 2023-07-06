@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:show]
 
   # GET /profiles or /profiles.json
   def index
@@ -12,7 +13,11 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
+    if current_user.profile.present?
+      redirect_to edit_profile_path(current_user.profile)
+    else
+      @profile = current_user.build_profile
+    end
   end
 
   # GET /profiles/1/edit
