@@ -28,12 +28,20 @@
 
   <div>
     <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
+    <%= form.select :location , [["Rajkot", "rajkot"], ["Ahemdabad", "ahemdabad"], ["Vadodra", "vadodra"]] %>
   </div>
 
   <div>
     <%= form.label :employment_type, style: "display: block" %>
-    <%= form.text_field :employment_type %>
+    <%= form.label :employment_type_male, 'Full Time' %>
+    <%= form.radio_button :employment_type, 'full_time' %>
+    <%= form.label :employment_type_female, 'Part Time' %>
+    <%= form.radio_button :employment_type, 'part_time' %><br />
+  </div>
+
+  <div>
+    <%= form.label :attachment, style: "display: block" %>
+    <%= form.file_field :attachment %>
   </div>
 
   <div>
