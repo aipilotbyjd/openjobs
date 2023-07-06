@@ -8,6 +8,6 @@
       <%= link_to 'Download Attachment', rails_blob_path(job.attachment, disposition: 'attachment') %>
     <% end %>
     
-    <%= link_to "Apply Now", job %>
+    <%= link_to "Apply Now", "/jobs/#{job.id}/apply" %>
   </div>
 </div>
