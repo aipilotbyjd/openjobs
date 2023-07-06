@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: %i[ show edit update destroy ]
+  before_action :set_job, only: %i[ show edit update destroy apply ]
   before_action :authenticate_company!, only: %i[ new create edit update destroy ]
 
   # GET /jobs or /jobs.json
@@ -62,6 +62,23 @@ class JobsController < ApplicationController
   end
 
   def oneclickapply
+    @job = Job.find(params[:job_id])
+    @job_application = JobApplication.new(job: @job, user: current_user)
+
+    # Assign the name, email, and attachment to the job application
+    @job_application.name = current_user.name
+    @job_application.email = current_user.email
+    # @job_application.resume = current_user.attachment
+
+    respond_to do |format|
+      if @job_application.save
+        format.html { redirect_to @job, notice: "Job application submitted successfully." }
+        format.json { render :show, status: :created, location: @job }
+      else
+        format.html { redirect_to @job, alert: "Failed to submit job application." }
+        format.json { render json: @job_application.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

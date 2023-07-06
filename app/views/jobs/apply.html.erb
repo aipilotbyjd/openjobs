@@ -1,14 +1,19 @@
-<h1 class="text-center">Apply For job</h1>
+<h1 class="text-center">Apply For Job</h1>
 
 <div>
-  <p class="text-center">* by clicking to one click apply your resume and name and email will be sent to compony</p>
+  <p class="text-center">* By clicking "One Click Apply," your resume, name, and email will be sent to the company</p>
 </div>
+
 <div class="text-center">
-  <%= link_to "One Click Apply", jobs_oneclickapply_path ,class:"btn btn-success" %>
+  <%= form_with(url: jobs_oneclickapply_path, method: :post) do |f| %>
+    <%= f.hidden_field :job_id, value: @job.id %>
+
+    <%= f.submit "One Click Apply", class: "btn btn-success" %>
+  <% end %>
 </div>
 
 <br>
 
 <div class="text-center">
-  <%= link_to "Back to jobs", jobs_path %>
+  <%= link_to "Back to Jobs", jobs_path %>
 </div>
